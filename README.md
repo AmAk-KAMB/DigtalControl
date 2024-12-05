@@ -1,4 +1,76 @@
-# Titulo de la clase
+# FUNCIÓN DE TRANSFERENCIA
+Se incia la explicación del tema poniendo como introducción haciendo un repaso de aplicar la transformada de LaPlace para encontrar la salida de una ecuación diferencial, y de la aplicación de transformada inversa para retornar al dominio del tiempo.
+
+💡Ejemplo
+
+-Hallar y(t) para la siguiente ecuación diferencial
+
+$$y''+9y=18t$$
+
+-Aplicando la transformada de LaPlace
+
+
+
+  
+
+$$ \mathcal{L}\{y''+9y=18t} $$
+$$ \mathcal{L}\{y''+9y}=\mathcal{L}\{18t} $$
+$$ \mathcal{L}\{y''} + \mathcal{L}\{9y}=\mathcal{L}\{18t} $$  
+
+$$ y=y(t)    y(t)=Y(s) $$
+
+$$ \mathcal{L}\{y''}=S^2\mathcal{L}\{y}-Sy(0)-y'(0)=S^2-S*0-0=S^2Y(s) $$
+$$ \mathcal{L}\{9y}=9\mathcal{L}\{y}=9Y(s) $$
+$$ \mathcal{L}\{18t}=18 \frac{1} {s^2}          \longrightarrow                    t^{n}\longrightarrow \frac{n!}{s{^n+1}} $$
+$$ \mathcal{L}\{18t}=\frac{18} {s^2} $$
+
+$$ S^2Y(s)+9Y(s)=\frac{18} {s^2} $$
+$$ Y(s)(S^2+9)=\frac{18} {s^2} $$
+$$ Y(s)=\frac{18} {s^2*(S^2+9)} $$
+
+$$ \mathcal{L^{-1}}\{Y(s)}=y(t) $$
+
+
+$$ \frac{18} {s^2*(S^2+9)}=\frac{A} {s^2}+\frac{B} {(S^2+9)}= $$
+$$ \mathcal{L^{-1}}\{\frac{18} {s^2*(S^2+9)}}=  \mathcal{L^{-1}}\{\frac{A} {s^2}}+ \mathcal{L^{-1}}\{\frac{B} {S^2+9}} $$
+
+$$ =\frac{A(S^2+9)+BS^2} {s^2*(S^2+9)}=\frac{18} {s^2*(S^2+9)} \rightrightarrows  A(S^2+9)+BS^2=18 $$
+
+$$ S=0   9A=18 \rightrightarrows A=2 $$
+$$ S=1   10A+B=18 $$
+
+$$ 10*(2)+B=18 $$
+$$ 20+B=18 $$
+$$ B=\frac{18} {20} \rightrightarrows B=-2 $$
+$$ \frac{18} {s^2*(S^2+9)}=\frac{2} {s^2} - \frac{2} {(S^2+9)} $$
+
+$$ \mathcal{L^{-1}}\{\frac{18} {s^2*(S^2+9)}}=  \mathcal{L^{-1}}\{\frac{2} {s^2}}+ \mathcal{L^{-1}}\{\frac{2} {S^2+9}} $$
+$$ \mathcal{L^{-1}}\{\frac{2} {s^2}} = 2 \mathcal{L^{-1}}\{\frac{1} {s^2}} $$
+
+$$  \mathcal{L^{-1}} {\frac{n!}{s{^n+1}}} = t^{n} $$
+$$ \mathcal{L^{-1}}\{\frac{2} {s^2}} = 2 \mathcal{L^{-1}}\{\frac{1} {s^2}}=2t  $$
+
+$$ \mathcal{L^{-1}}\{\frac{2} {s^2+9}} = 2 \mathcal{L^{-1}}\{\frac{1} {s^2+9}} $$
+
+$$  \mathcal{L^{-1}} \frac{a}{s{^2}+a^{2}} = \sin{at} $$
+
+$$ 2 \mathcal{L^{-1}}\{\frac{1} {s^2+9}} \rightrightarrows 2* \frac{1} {3}\mathcal{L^{-1}}\{\frac{3} {s^2+3^2}} =$$
+
+$$ =\frac{2} {3} \sin 3(t) $$
+
+$$ \mathcal{L^{-1}}\{\frac{18} {s^2*(S^2+9)}}= 2t - \frac{2} {3} \sin 3(t) $$
+
+$$ y(t)= 2t - \frac{2} {3} \sin 3(t) $$
+
+## 1. Función de transferencia
+En el área de control se usa otro tipo de representación matemática denominada función de transferencia; consiste en la transformada de LaPlace de la ecuación diferencial.
+
+
+$$ \text{Se despeja} \frac{\text{Salida}}{\text{Entrada}} \text{es decir}: \frac{Y(s)}{U(s)} $$
+
+$$ \text{Todas las condiciones inciales de la euación diferencial son iguales a 0} , \text{En caso de requerir solucionar la ecuación diferencial si son necesarias las condiciones iniciales} $$
+
+
 El título de cada clase, correspondiente al tema general que se trabaje en clase. Siempre después de cada título de clase, redactar una breve introducción (mínimo un párrafo) que de una mirada general al tema
 ## 1. Subtítulos
 Agregue todos los subtítulos que considere necesarios para estructurar el contenido de la clase. Es importante que considere jerarquías de los temas para definir el orden de estos subtítulos. Cada subtítulo debe ir numerado como una sección, de la manera en que lo presenta esta plantilla
