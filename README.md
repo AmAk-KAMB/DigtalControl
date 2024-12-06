@@ -1,76 +1,64 @@
-# Titulo de la clase
-El título de cada clase, correspondiente al tema general que se trabaje en clase. Siempre después de cada título de clase, redactar una breve introducción (mínimo un párrafo) que de una mirada general al tema
-## 1. Subtítulos
-Agregue todos los subtítulos que considere necesarios para estructurar el contenido de la clase. Es importante que considere jerarquías de los temas para definir el orden de estos subtítulos. Cada subtítulo debe ir numerado como una sección, de la manera en que lo presenta esta plantilla
+# FUNCIÓN DE TRANSFERENCIA
+La función de transferencia es una de las herramientas fundamentales en la teoría de control, ya que describe cómo un sistema dinámico responde a entradas externas en términos de su salida. En términos simples, es la relación entre la salida y la entrada de un sistema en el dominio de la frecuencia compleja \( s \), y se obtiene a partir de las ecuaciones diferenciales que modelan el sistema.
 
-## 2. Definiciones
-Utilice el símbolo '>' para crear bloques de texto. En la presente plantilla estas cajas están reservadas para resaltar las definiciones, las cuales deben ser breves, y la palabra o frase que se está definiendo debe estar en letra itálica. El inicio del bloque de texto debe realizarse con el emoji 🔑 .
->🔑 *Definición:* descripción precisa y clara del significado de una palabra, término, concepto o fenómeno. Es una explicación que establece los límites y el alcance de aquello que se está definiendo, aclarando su naturaleza, características esenciales y, en algunos casos, su relación con otros conceptos.
+Para sistemas lineales e invariantes en el tiempo (LTI), la función de transferencia se define como el cociente de las transformadas de Laplace de la salida y la entrada, asumiendo que las condiciones iniciales son cero. Es una forma compacta de representar el comportamiento dinámico de un sistema sin tener que resolver las ecuaciones diferenciales de manera explícita.
 
-## 3. Subsecciones
-Las subsecciones pueden utilizarse para sub dividir ciertos temas que se tienen en clases, por ejemplo si se está trabajandolos conversores D/A, puede ser necesario subdividir este en circuito de resistencias ponderadas y circuito de escalera R2R. 
-### 3.1. Título de subsecciones
-Para la creación de estas subsecciones debe utilizar un tamaño de letra más pequeño, por lo tanto utilice la etiqueta '###' 
-### 3.2. Numeración de subsecciones
-Siga la numeración de la sección seguida de un punto y luego el número de la subsección.
+## 1. Definición de Función de Transferencia
+🔑 \textit{Función de Transferencia:} La función de transferencia de un sistema es la relación entre la transformada de Laplace de la salida \( Y(s) \) y la entrada \( U(s) \), bajo la condición de que las condiciones iniciales son cero. Matemáticamente se expresa como:
 
-## 4. Ejemplos
-Si en algún caso pretende dar un ejemplo explicativo ya sea a través de texto o através de ecuaciones matemáticos, utilizar la palabra 'Ejemplo' seguido de una numeración consecutiva dentro de la clase. Utilice el emoji 💡 antecediendo la palabra.
+$$ G(s) = \frac{Y(s)}{U(s)} $$
 
-## 5. Ecuaciones
-Para la edición de ecuaciones debe utilizar la etiqueta '$$' al comienzo y final de la ecuación para que la ecuación quede centrada ocupando una línea. Si se quiere que la ecuación quede integrada en el texto debe utilizar la etiqueta '$' al comienzo y final de la ecuación. Las ecuaciones pueden ser editadas utilizando el código LATEX, en el siguiente enlace encuentran un editor de ecuaciones que les genera el código. http://www.alciro.org/tools/matematicas/editor-ecuaciones.jsp . Sin embargo hay muchas otras herramientas que pueden utilizar para esto.
+Donde:
 
-💡**Ejemplo 1:** si se va a representar la ecuación de la ley de Ohm se puede mostrar así $R=\frac{V}{I}$ o también,
+- \( G(s) \) es la función de transferencia del sistema.
+- \( Y(s) \) es la transformada de Laplace de la salida.
+- \( U(s) \) es la transformada de Laplace de la entrada.
 
-$$R=\frac{V}{I}$$
+## 2. Derivación de la Función de Transferencia
+Para derivar la función de transferencia de un sistema, primero es necesario partir de las ecuaciones diferenciales que describen el sistema. A continuación, aplicamos la transformada de Laplace, lo que convierte las ecuaciones diferenciales en ecuaciones algebraicas en el dominio de \( s \).
 
-## 6. Figuras
-Todas las figuras que incluya deben ser generadas por ustedes, **no utilizar las figuras de las presentaciones**. Para incluir figuras puede seguir los siguientes pasos:
-* Primero escribimos ![]().
-* Después escribimos, dentro de los corchetes, el texto alternativo. Este es opcional y solo entra en acción cuando no se puede cargar la imagen correctamente.
-* Después escribimos, dentro de los paréntesis, la ubicación del archivo (ya sea una url o una ubicación dentro de algun folder local). Se recomienda poner las imágenes en una carpeta que se llame imágenes dentro del repositorio github para que no tengan problemas al cargar las imágenes.
+Por ejemplo, si tenemos un sistema de primer orden, cuya ecuación diferencial es:
 
-💡**Ejemplo 2:**
+$$ \frac{dy(t)}{dt} + ay(t) = bu(t) $$
 
-![Figura de prueba](images/plantilla/Captura2.PNG)
+Al aplicar la transformada de Laplace a ambos lados (y suponer condiciones iniciales cero), obtenemos:
 
-Figura 1. Figura de prueba
+$$ sY(s) + aY(s) = bU(s) $$
 
-Incluya la respectiva etiqueta a modo de descripción de la figura y mantenga numeración consecutiva para todas las figuras de la clase.
+De aquí, podemos despejar la función de transferencia:
 
-## 7. Tablas
-En caso de necesitar la inclusión de tablas para organizar información se recomienda el uso de la herramienta del siguiente enlace https://www.tablesgenerator.com/markdown_tables , la cual permite organizar la información dentro de la tabla y genera el código markdown automáticamente:
+$$ G(s) = \frac{Y(s)}{U(s)} = \frac{b}{s + a} $$
 
-💡**Ejemplo 3:** 
+Este es un sistema de primer orden con un polo en \( s = -a \).
 
-| **Resultado** | **x = número de intentos hasta primer éxito** |
-|---------------|-----------------------------------------------|
-|       S       |                       1                       |
-|       FS      |                       2                       |
-|      FFS      |                       3                       |
-|      ...      |                      ...                      |
-|    FFFFFFS    |                       7                       |
-|      ...      |                      ...                      |
+## 3. Función de Transferencia en Sistemas de Segundo Orden
+En sistemas más complejos, como los de segundo orden, las ecuaciones diferenciales suelen ser más complicadas. Consideremos el siguiente sistema de segundo orden:
 
-Tabla 1. Tabla de ejemplo
+$$ \frac{d^2y(t)}{dt^2} + 2\zeta \omega_n \frac{dy(t)}{dt} + \omega_n^2 y(t) = \omega_n^2 u(t) $$
 
-Cada tabla debe llevar la etiqueta que describa su contenido y numeración consecutiva para todas las tablas
+Aplicando la transformada de Laplace, obtenemos:
 
-## 8. Código
-Teniendo en cuenta que el curso requiere del desarrollo de código matlab, c, c++ u otro. Si requiere incluir pequeños segmentos de código en los apuntes hágalos de la siguiente manera:
+$$ (s^2 + 2\zeta \omega_n s + \omega_n^2) Y(s) = \omega_n^2 U(s) $$
 
-💡**Ejemplo 4:**
-```
-var sumar2 = function(numero) {
-  return numero + 2;
-}
-```
+Por lo tanto, la función de transferencia de este sistema es:
 
-## 9. Ejercicios
-Deben agregar 2 ejercicios con su respectiva solución, referentes a los temas tratados en cada una de las clases. Para agregar estos, utilice la etiqueta #, es decir como un nuevo título dentro de la clase con la palabra 'Ejercicios'. Cada uno de los ejercicios debe estar numerado y con su respectiva solución inmediatamente despues del enunciado. Antes del subtitulo de cada ejercicio incluya el emoji 📚
+$$ G(s) = \frac{\omega_n^2}{s^2 + 2\zeta \omega_n s + \omega_n^2} $$
 
-## 10. Conclusiones
-Agregue unas breves conclusiones sobre los temas trabajados en cada clase, puede ser a modo de resumen de lo trabajado o a indicando lo aprendido en cada clase
+Este es un sistema de segundo orden que depende de dos parámetros importantes: la frecuencia natural \( \omega_n \) y el factor de amortiguamiento \( \zeta \).
 
-## 11. Referencias
-Agregue un subtítulo al final donde pueda poner todas las referencias consultadas incluyendo el origen o fuente de los ejercicios planteados. Tambien dentro del texto referencie los textos o artículos consultados y las figuras y tablas dentro de la explicación de las mismas.
+### 3.1 Análisis de Polos y Ceros
+Los polos y ceros de la función de transferencia juegan un papel crucial en la determinación de la respuesta dinámica del sistema. Los polos de la función de transferencia corresponden a las raíces del denominador, mientras que los ceros corresponden a las raíces del numerador. El comportamiento transitorio del sistema está determinado por los polos, y la estabilidad está directamente relacionada con la ubicación de estos polos en el plano complejo.
+
+## 4. Propiedades de la Función de Transferencia
+Las propiedades de la función de transferencia son fundamentales para el análisis y diseño de sistemas. Algunas de las propiedades más importantes incluyen:
+
+- **Estabilidad:** Un sistema es estable si todos los polos de su función de transferencia tienen parte real negativa. Si algún polo tiene parte real positiva, el sistema es inestable.
+- **Respuesta en frecuencia:** La función de transferencia proporciona información sobre cómo un sistema responde a diferentes frecuencias. Esto es útil para analizar la resonancia y las oscilaciones en sistemas de control.
+- **Rendimiento:** La función de transferencia también puede usarse para estudiar la capacidad del sistema de seguir una señal de entrada o de amortiguar las oscilaciones.
+
+## 5. Conclusión
+La función de transferencia es una herramienta esencial en el análisis y diseño de sistemas de control. Permite comprender cómo un sistema responde a diferentes entradas y proporciona un marco para el diseño de controladores que aseguren un rendimiento adecuado y una estabilidad del sistema. 
+
+# REFERENCIAS
+1. Ogata, K. (2010). \textit{Modern Control Engineering}. Pearson.
+2. Nise, N. S. (2011). \textit{Control Systems Engineering}. Wiley.
